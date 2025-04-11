@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
 }
 
 main {
@@ -45,7 +45,9 @@ main {
     gap: 0.5rem;
 }
 
-#container, #content-area, #input-field {
+#container,
+#content-area,
+#input-field {
     display: flex;
     flex-direction: column;
 }
@@ -61,7 +63,9 @@ main {
     outline-color: var(--highlight-color);
 }
 
-#title, #label, #input {
+#title,
+#label,
+#input {
     color: var(--primary-text-color);
 }
 
@@ -74,7 +78,8 @@ main {
     font-weight: bold;
 }
 
-#input, #button {
+#input,
+#button {
     font-size: 0.875rem;
     padding: 0.75rem;
 }
@@ -89,7 +94,7 @@ main {
         background-color: var(--primary-background-color);
         padding: 0;
     }
-  
+
     #container {
         background-color: transparent;
         border-radius: 0;
