@@ -89,7 +89,7 @@
 }
 
 @media screen and (max-width: 416px) {
-    main {
+    #main {
         align-items: unset;
         background-color: var(--color-primary-background);
         padding: 0;
