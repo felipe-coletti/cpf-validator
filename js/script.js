@@ -1,62 +1,58 @@
-const formatCPF = () => {
-    cpf = document.getElementById("input").value.replace(/\D/g, '').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1-$2').replace(/(-\d{2})\d+?$/, '$1')
+const form = document.getElementById('form')
+const input = document.getElementById('input')
 
-    document.getElementById("input").value = cpf
+input.addEventListener('keyup', () => {
+    const rawValue = input.value.replace(/\D/g, '')
+
+    const formatted = rawValue
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1-$2')
+        .replace(/(-\d{2})\d+?$/, '$1')
+
+    input.value = formatted
+})
+
+const calculateLastDigits = (numbers) => {
+    let firstResult = 0
+    let secondResult = 0
+
+    for (let i = 0; i < 9; i++) {
+        firstResult += parseInt(numbers[i]) * (10 - i)
+    }
+
+    for (let i = 0; i < 10; i++) {
+        secondResult += parseInt(numbers[i]) * (11 - i)
+    }
+
+    let firstCheckDigit = (firstResult * 10) % 11
+    let secondCheckDigit = (secondResult * 10) % 11
+
+    if (firstCheckDigit === 10) firstCheckDigit = 0
+    if (secondCheckDigit === 10) secondCheckDigit = 0
+
+    return firstCheckDigit === parseInt(numbers[9]) && secondCheckDigit === parseInt(numbers[10])
 }
 
-const calculateLastDigits = () => {
-    firstResult = 0
-    secondResult = 0
-    
-    for (i = 0; i < cpf.length - 2; i++) {
-        number = cpf.length - 1 - i
-        firstResult += parseInt(cpf[i]) * number
-    }
-    for (i = 0; i < cpf.length - 1; i++) {
-        number = cpf.length - i
-        secondResult += parseInt(cpf[i]) * number
-    }
-
-    firstCheckDigit = firstResult * 10 % 11
-    secondCheckDigit = secondResult * 10 % 11
-
-    if (firstCheckDigit = 10) {
-        firstCheckDigit = 0
-    }
-    if (secondCheckDigit = 10) {
-        secondCheckDigit = 0
-    }
-
-    return (firstCheckDigit = parseInt(cpf[cpf.length - 2])) && (secondCheckDigit = parseInt(cpf[cpf.length - 1]))
+const checkRepeats = (numbers) => {
+    return !/^(.)\1+$/.test(numbers)
 }
 
-const checkRepeats = () => {
-    repeats = 0
-    
-    for (i = 1; i < cpf.length; i++) {
-        if (cpf[i] == cpf[i - 1]) {
-            repeats++
-        }
-    }
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
 
-    return repeats < 10
-}
+    const cpf = input.value.replace(/[^0-9]/g, '')
 
-const validateCPF = () => {
-    cpf = document.getElementById("input").value.replace(/[^0-9]/g, "")
+    const result = document.getElementById('result')
 
-    if (cpf.length == 11) {
-        if (calculateLastDigits() && checkRepeats()) {
-            document.getElementById("result").innerHTML = "CPF válido."
-            document.getElementById("result").style.color = "green"
-        } else {
-            document.getElementById("result").innerHTML = "CPF inválido."
-            document.getElementById("result").style.color = "red"
-        }
+    if (cpf.length === 11) {
+        const isValid = calculateLastDigits(cpf) && checkRepeats(cpf)
 
-        document.getElementById("result").style.display = "block"
+        result.innerHTML = isValid ? 'CPF válido.' : 'CPF inválido.'
+        result.style.color = isValid ? 'green' : 'red'
+        result.style.display = 'block'
     } else {
-        document.getElementById("result").innerHTML = ""
-        document.getElementById("result").style.display = "none"
+        result.innerHTML = ''
+        result.style.display = 'none'
     }
-}
+})

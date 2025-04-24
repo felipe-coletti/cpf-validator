@@ -6,20 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Validação de CPF</title>
         <link rel="stylesheet" href="css/style.css" />
-        <script src="js/script.js"></script>
+        <script src="js/script.js" defer></script>
     </head>
     <body>
         <main id="main">
             <div id="container">
                 <h1 id="title">Validação de CPF</h1>
-                <div id="content-area">
-                    <div id="input-field">
-                        <label id="label" for="input">CPF</label>
-                        <input id="input" onkeyup="formatCPF()" />
-                    </div>
-                    <button id="button" onclick="validateCPF()">Verificar</button>
+                <form id="form">
+                    <label id="label" for="input">
+                        CPF
+                        <input type="text" id="input" />
+                    </label>
+                    <button type="submit" id="button">Verificar</button>
                     <p id="result"></p>
-                </div>
+                </form>
             </div>
         </main>
     </body>
