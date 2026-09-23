@@ -80,10 +80,6 @@
 	padding: 0.75rem;
 }
 
-#result {
-	display: none;
-}
-
 @media screen and (max-width: 416px) {
 	#main {
 		align-items: unset;

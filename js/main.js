@@ -27,9 +27,9 @@ form.addEventListener('submit', e => {
 
 		result.innerHTML = isValid ? 'CPF válido.' : 'CPF inválido.'
 		result.style.color = isValid ? 'green' : 'red'
-		result.style.display = 'block'
+		result.hidden = true
 	} else {
 		result.innerHTML = ''
-		result.style.display = 'none'
+		result.hidden = false
 	}
 })
