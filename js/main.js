@@ -25,11 +25,11 @@ form.addEventListener('submit', e => {
 	if (cpf.length === 11) {
 		const isValid = calculateLastDigits(cpf) && checkRepeats(cpf)
 
-		result.innerHTML = isValid ? 'CPF válido.' : 'CPF inválido.'
-		result.style.color = isValid ? 'green' : 'red'
+		result.textContent = isValid ? 'CPF válido.' : 'CPF inválido.'
+		result.classList.add(isValid ? 'green' : 'red')
 		result.hidden = true
 	} else {
-		result.innerHTML = ''
-		result.hidden = false
+		result.textContent = ''
+		result.classList.remove('success', 'error')
 	}
 })

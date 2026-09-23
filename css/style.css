@@ -2,7 +2,9 @@
 	--color-accent: #0072e3;
 	--color-background: #f9f9f9;
 	--color-border: #ccc;
+	--color-error: #d32f2f;
 	--color-shadow: #d9d9d9;
+	--color-success: #188038;
 	--color-surface: #fff;
 	--color-text-primary: #000;
 }
@@ -78,6 +80,14 @@
 #button {
 	font-size: 0.875rem;
 	padding: 0.75rem;
+}
+
+#result.success {
+	color: var(--color-success);
+}
+
+#result.error {
+	color: var(--color-error);
 }
 
 @media screen and (max-width: 416px) {
