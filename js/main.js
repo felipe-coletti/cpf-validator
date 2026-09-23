@@ -24,7 +24,7 @@ form.addEventListener('submit', e => {
 	if (cpf.length === 11) {
 		const isValid = calculateLastDigits(cpf) && checkRepeats(cpf)
 
-		result.textContent = isValid ? 'CPF válido.' : 'CPF inválido.'
+		result.textContent = isValid ? 'CPF válido' : 'CPF inválido'
 		result.classList.add(isValid ? 'success' : 'error')
 		result.hidden = false
 	} else {
