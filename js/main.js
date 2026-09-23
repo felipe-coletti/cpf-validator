@@ -1,4 +1,4 @@
-import { calculateLastDigits, checkRepeats } from './validate.js'
+import { calculateLastDigits, checkRepeats } from './cpf.js'
 
 const input = document.getElementById('input')
 const form = document.getElementById('form')
