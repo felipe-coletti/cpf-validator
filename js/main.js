@@ -27,9 +27,10 @@ form.addEventListener('submit', e => {
 
 		result.textContent = isValid ? 'CPF válido.' : 'CPF inválido.'
 		result.classList.add(isValid ? 'green' : 'red')
-		result.hidden = true
+		result.hidden = false
 	} else {
 		result.textContent = ''
 		result.classList.remove('success', 'error')
+		result.hidden = true
 	}
 })
