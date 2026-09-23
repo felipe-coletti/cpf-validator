@@ -1,7 +1,8 @@
 import { calculateLastDigits, checkRepeats } from './cpf.js'
 
-const input = document.getElementById('input')
 const form = document.getElementById('form')
+const input = document.getElementById('input')
+const result = document.getElementById('result')
 
 input.addEventListener('keyup', () => {
 	const rawValue = input.value.replace(/\D/g, '')
@@ -19,8 +20,6 @@ form.addEventListener('submit', e => {
 	e.preventDefault()
 
 	const cpf = input.value.replace(/[^0-9]/g, '')
-
-	const result = document.getElementById('result')
 
 	if (cpf.length === 11) {
 		const isValid = calculateLastDigits(cpf) && checkRepeats(cpf)
